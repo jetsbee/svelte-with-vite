@@ -6,7 +6,17 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
-    "noEmit": true
+    /**
+     * "noEmit": true config makes an error on tsconfig.json.
+     * "files": [] solution from one of ref isn't working.
+     * 
+     * Ref 1. https://stackoverflow.com/a/77369498
+     * Ref 2. https://github.com/microsoft/TypeScript/issues/49844
+     * Ref 3. https://github.com/vitejs/vite/issues/13747
+     * Ref 4. https://github.com/vitejs/vite/commit/cf3f40cd383509fdb1294568fb38bacfac419ea1
+     */
+    // "noEmit": true
+    "emitDeclarationOnly": true
   },
   "include": ["vite.config.ts"]
 }
