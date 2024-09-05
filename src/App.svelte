@@ -2,6 +2,11 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+
+  let isShowSubApp = false;
+  const handleClickBtn = (e: Event) => {
+    isShowSubApp = !isShowSubApp;
+  }
 </script>
 
 <main>
@@ -26,6 +31,11 @@
   <p class="read-the-docs">
     Click on the Vite and Svelte logos to learn more
   </p>
+
+  <button on:click={handleClickBtn}>Click!!</button>
+  {#await import('./SubApp.svelte') then module}
+    <svelte:component this={module.default} isShow={isShowSubApp} />
+  {/await}
 </main>
 
 <style lang="scss">
